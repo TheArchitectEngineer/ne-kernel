@@ -14,16 +14,16 @@ using ksz_t = long long unsigned int;
 /// @brief C Standard Library overrides.                     ///
 /// =========================================================== ///
 
-EXTERN_C void* memset(void* dst, int c, ksz_t len) {
+EXTERN_C VoidPtr memset(VoidPtr dst, int c, ksz_t len) {
   return Ne::Kernel::rt_set_memory_safe(dst, c, static_cast<Size>(len), static_cast<Size>(len));
 }
 
-EXTERN_C void* memcpy(void* dst, const void* src, ksz_t len) {
-  Ne::Kernel::rt_copy_memory_safe(const_cast<void*>(src), dst, static_cast<Size>(len),
+EXTERN_C VoidPtr memcpy(VoidPtr dst, const VoidPtr src, ksz_t len) {
+  Ne::Kernel::rt_copy_memory_safe(const_cast<VoidPtr>(src), dst, static_cast<Size>(len),
                               static_cast<Size>(len));
   return dst;
 }
 
-EXTERN_C Int32 strcmp(const char* a, const char* b) {
+EXTERN_C Int32 strcmp(const Char* a, const Char* b) {
   return Ne::Kernel::rt_string_cmp(a, b, rt_string_len(a));
 }
