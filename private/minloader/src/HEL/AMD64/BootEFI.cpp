@@ -368,12 +368,12 @@ EFI_EXTERN_C EFI_API Int32 BootloaderMain(EfiHandlePtr image_handle, EfiSystemTa
       ST->RuntimeServices->SetVariable(L"/props/problems_detected_cnt", kEfiGlobalNamespaceVarGUID,
                                        0, &sz_prob_cnt, &prob_cnt);
 
-      writer.Write("BootZ: OS detection module failed. Check logs.\n");
+      writer.Write("BootZ: OS detection module failed. Check logs.\r");
 
       EfiInputKey key{};
 
-      ST->ConOut->OutputString(ST->ConOut, L"BootZ: Y for System Diagnostics or N to stop...\r\n");
-      ST->ConOut->OutputString(ST->ConOut, L"Choose? (Y/N)\r\n");
+      ST->ConOut->OutputString(ST->ConOut, L"BootZ: Y for System Diagnostics or N to stop...\r");
+      ST->ConOut->OutputString(ST->ConOut, L"Choose? (Y/N)\r");
       ST->ConIn->Reset(ST->ConIn, TRUE);
 
       while (key.UnicodeChar != 'Y') {
@@ -395,6 +395,8 @@ EFI_EXTERN_C EFI_API Int32 BootloaderMain(EfiHandlePtr image_handle, EfiSystemTa
         if (ret != kEfiOk) {
           Boot::Stop();
         }
+      } else {
+        Boot::Stop();
       }
     }
   }
