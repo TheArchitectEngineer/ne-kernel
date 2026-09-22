@@ -61,7 +61,7 @@ struct PACKED GPT_PARTITION_TABLE final {
   UInt8    Reserved2[kSectorAlignGPT_PartTbl];
 };
 
-struct PACKED GPT_PARTITION_ENTRY {
+struct PACKED GPT_PARTITION_ENTRY final {
   EFI_GUID PartitionTypeGUID;
   EFI_GUID UniquePartitionGUID;
   UInt64   StartLBA;
