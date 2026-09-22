@@ -13,7 +13,7 @@
 #define kSectorAlignGPT_PartEntry (72U)
 #define kMagicLenGPT (8U)
 #define kMagicGPT ("EFI PART")  // "EFI PART"
-#define kGPTPartitionTableLBA (1024U + sizeof(GPT_PARTITION_TABLE))
+#define kGPTPartitionTableLBA (512 + sizeof(GPT_PARTITION_TABLE))
 
 namespace Ne::Kernel {
 
