@@ -372,8 +372,8 @@ EFI_EXTERN_C EFI_API Int32 BootloaderMain(EfiHandlePtr image_handle, EfiSystemTa
 
       EfiInputKey key{};
 
-      ST->ConOut->OutputString(ST->ConOut, L"BootZ: Y for System Diagnostics or N to stop...\r");
-      ST->ConOut->OutputString(ST->ConOut, L"Choose? (Y/N)\r");
+      ST->ConOut->OutputString(ST->ConOut, L"BootZ: Y for System Diagnostics or N to stop...\r\n");
+      ST->ConOut->OutputString(ST->ConOut, L"Choose? (Y/N)\r\n");
       ST->ConIn->Reset(ST->ConIn, TRUE);
 
       while (key.UnicodeChar != 'Y') {
