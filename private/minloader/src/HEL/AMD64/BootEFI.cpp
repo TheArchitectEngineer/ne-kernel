@@ -368,7 +368,7 @@ EFI_EXTERN_C EFI_API Int32 BootloaderMain(EfiHandlePtr image_handle, EfiSystemTa
       ST->RuntimeServices->SetVariable(L"/props/problems_detected_cnt", kEfiGlobalNamespaceVarGUID,
                                        0, &sz_prob_cnt, &prob_cnt);
 
-      writer.Write("BootZ: OS detection module failed. Check logs.\r");
+      writer.Write("BootZ: OS detection module failed. Check logs.\n");
 
       EfiInputKey key{};
 
