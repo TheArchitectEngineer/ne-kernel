@@ -33,8 +33,8 @@
 #define MUST_PASS(EXPR) __MUST_PASS((EXPR), __FILE__, __LINE__)
 #define assert(EXPR) MUST_PASS(EXPR)
 #else
-#define MUST_PASS(EXPR) Ne::Kernel::ke_stop(RUNTIME_CHECK_EXPRESSION, "Runtime Check Failed")
-#define assert(EXPR) Ne::Kernel::ke_stop(RUNTIME_CHECK_EXPRESSION, "Runtime Check Failed")
+#define MUST_PASS(EXPR) __MUST_PASS(EXPR, __FILE__, __LINE__)
+#define assert(EXPR) __MUST_PASS(EXPR, __FILE__, __LINE__)
 #endif
 
 enum RUNTIME_CHECK {
