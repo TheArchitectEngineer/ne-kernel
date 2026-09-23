@@ -82,8 +82,8 @@ class IPE32DylibObject final NE_DYLIB_OBJECT {
 
 using IDylibRef = IPE32DylibObject*;
 
-EXTERN_C IDylibRef rtl_init_dylib_pef(UserProcess& header);
-EXTERN_C Void      rtl_fini_dylib_pef(UserProcess& header, IDylibRef lib, Bool* successful);
+EXTERN_C IDylibRef rtl_init_dylib_pe32(UserProcess& header);
+EXTERN_C Void      rtl_fini_dylib_pe32(UserProcess& header, IDylibRef lib, Bool* successful);
 
 }  // namespace Ne::Kernel
 

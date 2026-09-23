@@ -27,7 +27,7 @@ namespace Ne::Kernel {
 /** @brief Library initializer. */
 /***********************************************************************************/
 
-EXTERN_C IDylibRef rtl_init_dylib_pef(UserProcess& process) {
+EXTERN_C IDylibRef rtl_init_dylib_pe32(UserProcess& process) {
   IDylibRef dll_obj = tls_new_class<IPE32DylibObject>();
 
   if (!dll_obj) {
@@ -73,7 +73,7 @@ EXTERN_C IDylibRef rtl_init_dylib_pef(UserProcess& process) {
 /** @param successful Reports if successful or not. */
 /***********************************************************************************/
 
-EXTERN_C Void rtl_fini_dylib_pef(UserProcess& process, IDylibRef dll_obj, BOOL* successful) {
+EXTERN_C Void rtl_fini_dylib_pe32(UserProcess& process, IDylibRef dll_obj, BOOL* successful) {
   MUST_PASS(successful);
 
   if (!successful) {
