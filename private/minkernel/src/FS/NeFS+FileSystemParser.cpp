@@ -483,7 +483,7 @@ bool NeFileSystemParser::WriteCatalog(_Input const Char* catalog_name, Bool is_r
 
   auto catalog = this->GetCatalog(catalog_name);
   if (!catalog) {
-    kout << "NeFS: WriteCatalog failed to find catalog: " << catalog_name << "\n";
+    (Void)(kout << "NeFS: WriteCatalog failed to find catalog: " << catalog_name << kendl);
     return false;
   }
 
@@ -491,7 +491,7 @@ bool NeFileSystemParser::WriteCatalog(_Input const Char* catalog_name, Bool is_r
 
   if (!is_valid_size(size_of_data, maxSize)) {
     (Void)(kout << "NeFS: WriteCatalog called with invalid size: " << hex_number(size_of_data));
-    kout << "\n";
+    (Void)(kout << kendl);
 
     delete catalog;
     return false;
@@ -502,9 +502,11 @@ bool NeFileSystemParser::WriteCatalog(_Input const Char* catalog_name, Bool is_r
 
   if (!is_valid_lba(startFork, drive)) {
     (Void)(kout << "NeFS: WriteCatalog called with invalid LBA: " << hex_number(startFork));
-    kout << "\n";
+    (Void)(kout << kendl);
 
-    delete catalog;
+    if (catalog) delete catalog;
+    catalog = nullptr;
+
     return false;
   }
 
@@ -786,7 +788,7 @@ VoidPtr NeFileSystemParser::ReadCatalog(_Input _Output NEFS_CATALOG_STRUCT* cata
   if (!is_valid_size(dataSz, maxSize)) {
     kout << "NeFS: ReadCatalog called with invalid size: ";
     hex_number(dataSz);
-    kout << "\n";
+    (Void)(kout << kendl);
     return nullptr;
   }
 
@@ -795,7 +797,7 @@ VoidPtr NeFileSystemParser::ReadCatalog(_Input _Output NEFS_CATALOG_STRUCT* cata
   if (!is_valid_lba(dataForkLba, drive)) {
     kout << "NeFS: ReadCatalog called with invalid LBA: ";
     hex_number(dataForkLba);
-    kout << "\n";
+    (Void)(kout << kendl);
     return nullptr;
   }
 
