@@ -94,7 +94,7 @@ inline Bool rtl_sem_wait(SemaphoreArr& sem, const UInt64& owner, const UInt64& t
     return true;
   }
 
-#ifdef __ANT_USE_HW_TIMER__
+#ifdef __NE_USE_HW_TIMER__
   HardwareTimer timer(timeout);
 #else
   SoftwareTimer timer(timeout);
